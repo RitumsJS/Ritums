@@ -1,3 +1,78 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
 
-<h1 style="background-color:DodgerBlue;">Hello World</h1>
-<h2 style="color:Tomato;"/h2>
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+/* Portfolio Grid */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Image Styling */
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Video Section */
+.video-container {
+    text-align: center;
+    padding: 20px;
+}
+
+video {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+/* Bullet Points */
+.bullet-points {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bullet-points ul {
+    list-style-type: square;
+    padding: 0;
+}
+
+.bullet-points li {
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
+    video {
+        width: 100%;
+    }
+}
