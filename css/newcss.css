@@ -46,24 +46,21 @@ video {
     border-radius: 10px;
 }
 
-/* Bullet Points */
-.bullet-points {
+/* Headings Section */
+.headings-container {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.bullet-points ul {
-    list-style-type: square;
-    padding: 0;
-}
-
-.bullet-points li {
-    padding: 10px;
-    font-size: 18px;
+.headings-container h2 {
+    font-size: 22px;
+    color: #222;
+    margin: 15px 0;
 }
 
 /* Responsive Design */
