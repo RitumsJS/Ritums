@@ -1,76 +1,33 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align:center
-}
-
-/* Header */
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 24px;
-}
-
-/* Portfolio Grid */
-.portfolio-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
-}
-
-/* Image Styling */
-.portfolio-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Video Section */
-.video-container {
-    text-align: center;
-    padding: 20px;
-}
-
-video {
-    width: 80%;
-    max-width: 700px;
-    border-radius: 10px;
-}
-
-/* Headings Section */
-.headings-container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.headings-container h2 {
-    font-size: 22px;
-    color: #222;
-    margin: 15px 0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .portfolio-container {
-        grid-template-columns: 1fr;
-    }
-
-    video {
-        width: 100%;
-    }
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            color: #333;
+        }
+        header {
+            background: #4A90E2;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .category {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .category h2 {
+            margin-top: 0;
+            color: #4A90E2;
+        }
