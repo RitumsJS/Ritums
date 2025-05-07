@@ -1,34 +1,78 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
 <html>
-    <head>
-        <title>Gaidot dzimšanas dienu...</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Gaidot dzimšanas dienu...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type=\"text\"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type=\"button\"] {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        output {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gaidot dzimšanas dienu...</h1>
+    <form>
+        <p>Ievadi pilnu datumu, kad Tev būs dzimšanas diena</p>
+        <label for="gads">Gads</label>
+        <input type="text" id="gads" name="gads" placeholder="Gads">
+        <label for="menesis">Mēnesis</label>
+        <input type="text" id="menesis" name="menesis" placeholder="Mēnesis (1-12)">
+        <label for="diena">Datums</label>
+        <input type="text" id="diena" name="diena" placeholder="Diena">
+        <input type="button" name="poga" value="Aprēķināt dienu skaitu līdz dzimšanas dienai" onclick="dienas()">
+        <p>Līdz svētkiem atlikušas <output id="rezultats"></output> dienas.</p>
+    </form> 
 
-    </head>
-    <body>
-        <div>TODO write content</div>
-        <hr>
+    <script>
+        function dienas() {
+            const gads = parseInt(document.getElementById(\"gads\").value);
+            const menesis = parseInt(document.getElementById(\"menesis\").value) - 1; // JavaScript mēneši sākas no 0
+            const diena = parseInt(document.getElementById(\"diena\").value);
+            const sodiena = new Date();
+            let dzDiena = new Date(sodiena.getFullYear(), menesis, diena);
 
-        <form action="/action_page.php">
-            <p>Ievadi pilnu datumu, kad Tev būs dzimšanas diena</p>
-  <label for="gads">Gads</label>
-  <input type="text" id="gads" name="gads" value="Gads"><br>
-  <label for="menesis">Mēnesis</label>
-  <input type="text" id="menesis" name="menesis" value="Mēnesis"><br>
-  <label for="diena">Datums</label>
-  <input type="text" id="diena" name="diena" value="dienas : ))"><br>
-  <input type="button" name="poga" value="Aprēķināt dienu skaitu līdz dzimšanas dienai" onclick="dienas()">
-  <p>Līdz svētkiem atlikušas <output>
-</form> 
-            <script>
-            function dienas() {
-                let gads = document.getElementById("gads")
+            if (dzDiena < sodiena) {
+                dzDiena.setFullYear(sodiena.getFullYear() + 1);
             }
-            </script>
-    </body>
+
+            const atskiriba = dzDiena - sodiena;
+            const dienuSkaits = Math.ceil(atskiriba / (1000 * 60 * 60 * 24));
+
+            document.getElementById(\"rezultats\").textContent = dienuSkaits;
+        }
+    </script>
+</body>
 </html>
