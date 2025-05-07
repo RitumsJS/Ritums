@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="lv">
 <head>
-    <title>Gaidot dzimšanas dienu...</title>
     <meta charset="UTF-8">
+    <title>Gaidot dzimšanas dienu...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #f0f0f5;
         }
+
         form {
             background-color: white;
             padding: 20px;
-            border-radius: 8px;
             max-width: 400px;
             margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        label, input {
+
+        label {
             display: block;
-            margin-bottom: 10px;
+            margin-top: 10px;
         }
-        input[type=\"text\"] {
+
+        input[type="text"] {
             width: 100%;
             padding: 8px;
-            box-sizing: border-box;
+            margin-top: 5px;
         }
-        input[type=\"button\"] {
-            margin-top: 10px;
+
+        input[type="button"] {
+            margin-top: 15px;
             padding: 10px;
             width: 100%;
             background-color: #4CAF50;
@@ -37,42 +41,53 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        output {
+
+        p output {
             font-weight: bold;
         }
     </style>
 </head>
 <body>
+
     <h1>Gaidot dzimšanas dienu...</h1>
-    <form>
-        <p>Ievadi pilnu datumu, kad Tev būs dzimšanas diena</p>
+
+    <form onsubmit="return false;">
+        <p>Ievadi savu nākamās dzimšanas dienas datumu:</p>
+
         <label for="gads">Gads</label>
-        <input type="text" id="gads" name="gads" placeholder="Gads">
+        <input type="text" id="gads" placeholder="piemēram, 2025">
+
         <label for="menesis">Mēnesis</label>
-        <input type="text" id="menesis" name="menesis" placeholder="Mēnesis (1-12)">
-        <label for="diena">Datums</label>
-        <input type="text" id="diena" name="diena" placeholder="Diena">
-        <input type="button" name="poga" value="Aprēķināt dienu skaitu līdz dzimšanas dienai" onclick="dienas()">
-        <p>Līdz svētkiem atlikušas <output id="rezultats"></output> dienas.</p>
-    </form> 
+        <input type="text" id="menesis" placeholder="1 līdz 12">
+
+        <label for="diena">Diena</label>
+        <input type="text" id="diena" placeholder="1 līdz 31">
+
+        <input type="button" value="Aprēķināt dienas līdz dzimšanas dienai" onclick="dienas()">
+
+        <p>Līdz dzimšanas dienai atlikušas <output id="rezultats">...</output> dienas.</p>
+    </form>
 
     <script>
         function dienas() {
-            const gads = parseInt(document.getElementById(\"gads\").value);
-            const menesis = parseInt(document.getElementById(\"menesis\").value) - 1; // JavaScript mēneši sākas no 0
-            const diena = parseInt(document.getElementById(\"diena\").value);
+            const gads = parseInt(document.getElementById("gads").value);
+            const menesis = parseInt(document.getElementById("menesis").value) - 1; // JavaScript mēneši sākas ar 0
+            const diena = parseInt(document.getElementById("diena").value);
+            
             const sodiena = new Date();
             let dzDiena = new Date(sodiena.getFullYear(), menesis, diena);
 
+            // Ja dzimšanas diena šogad jau bija, pārcel uz nākamo gadu
             if (dzDiena < sodiena) {
                 dzDiena.setFullYear(sodiena.getFullYear() + 1);
             }
 
-            const atskiriba = dzDiena - sodiena;
-            const dienuSkaits = Math.ceil(atskiriba / (1000 * 60 * 60 * 24));
+            const starpiba = dzDiena - sodiena;
+            const dienasAtlikusas = Math.ceil(starpiba / (1000 * 60 * 60 * 24));
 
-            document.getElementById(\"rezultats\").textContent = dienuSkaits;
+            document.getElementById("rezultats").textContent = dienasAtlikusas;
         }
     </script>
+
 </body>
 </html>
