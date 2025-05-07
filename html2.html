@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-<p>Kas ir labākā skola?</p>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Labākā skola</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #eef6f9; color: #333; padding: 40px; text-align: center;">
 
-<form>
-  <input type="radio" id="1" name="fav_language" value="1.ģimnāzija">
-  <label for="1">1.ģimnāzija</label><br>
-  <input type="radio" id="2" name="fav_language" value="2.ģimnāzija">
-  <label for="2">2.ģimnāzija</label><br>
-  <input type="radio" id="3" name="fav_language" value="3.ģimnāzija">
-  <label for="3">3.ģimnāzija</label>
-</form>
-        
-        <a href="index.html">Lapa N*1</a>
-    </body>
+    <h1 style="margin-bottom: 30px;">Kas ir labākā skola?</h1>
+
+    <form style="background-color: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <input type="radio" id="1" name="fav_language" value="1.ģimnāzija" style="margin: 10px;">
+        <label for="1">1.ģimnāzija</label><br>
+
+        <input type="radio" id="2" name="fav_language" value="2.ģimnāzija" style="margin: 10px;">
+        <label for="2">2.ģimnāzija</label><br>
+
+        <input type="radio" id="3" name="fav_language" value="3.ģimnāzija" style="margin: 10px;">
+        <label for="3">3.ģimnāzija</label><br>
+
+        <button type="button" onclick="parbaudit()" style="margin-top: 15px; padding: 10px 20px; background-color: #4CAF50; border: none; color: white; font-size: 16px; border-radius: 5px; cursor: pointer;">Pārbaudīt atbildi</button>
+
+        <div id="rezultats" style="margin-top: 20px; font-size: 20px; font-weight: bold;"></div>
+    </form>
+
+    <a href="index.html" style="display: block; margin-top: 30px; color: #0066cc; text-decoration: none;">Lapa N*1</a>
+
+    <script>
+        function parbaudit() {
+            const radios = document.getElementsByName("fav_language");
+            let atbilde = "";
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    atbilde = radios[i].value;
+                    break;
+                }
+            }
+
+            const rezultats = document.getElementById("rezultats");
+            if (atbilde === "1.ģimnāzija") {
+                rezultats.textContent = "Pareizā atbilde!";
+                rezultats.style.color = "green";
+            } else if (atbilde === "") {
+                rezultats.textContent = "Lūdzu izvēlies atbildi!";
+                rezultats.style.color = "gray";
+            } else {
+                rezultats.textContent = "Nepareiza atbilde!";
+                rezultats.style.color = "red";
+            }
+        }
+    </script>
+</body>
 </html>
