@@ -10,15 +10,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div color="green">
-        <form1>
-            <p><input type="text" id="GB" name="GB" value="GB"> GB=</p>
-            <p><input type="button" name="poga" value="Izteikt megabaitos" onclick="()">
-            =<output name="x" for="a b"></output>
-            <p><p><input type="button" name="poga" value="Izteikt mibibaitos" onclick="()">
-            =<output name="x" for="a b"></output>
-        
-        </form1>
+        <div style="color: green;">
+        <form>
+            <p><input type="text" id="GB" name="GB" value="GB"> GB =</p>
+
+            <p><input type="button" name="poga" value="Izteikt megabaitos" onclick="uzMegabaitiem()">
+            = <output id="rezMB" name="x"></output></p>
+
+            <p><input type="button" name="poga" value="Izteikt mibibaitos" onclick="uzMibibaitiem()">
+            = <output id="rezMiB" name="x"></output></p>
+        </form>
         </div>
+
+        <script>
+            function uzMegabaitiem() {
+                const gb = parseFloat(document.getElementById("GB").value);
+                if (!isNaN(gb)) {
+                    const mb = gb * 1000;
+                    document.getElementById("rezMB").textContent = mb + " MB";
+                } else {
+                    document.getElementById("rezMB").textContent = "Nederīgs ievads";
+                }
+            }
+
+            function uzMibibaitiem() {
+                const gb = parseFloat(document.getElementById("GB").value);
+                if (!isNaN(gb)) {
+                    const mib = gb * (1000 / 1.048576); // 1 MiB = 1.048576 MB
+                    document.getElementById("rezMiB").textContent = mib.toFixed(2) + " MiB";
+                } else {
+                    document.getElementById("rezMiB").textContent = "Nederīgs ievads";
+                }
+            }
+        </script>
     </body>
 </html>
